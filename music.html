@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Music - My Creative World</title>
+
+<style>
+  *{margin:0;
+  padding:0;
+  box-sizing:border-box;
+  }
+  body{
+    font-family:'Poppins',sans-serif;
+    background-color:#001F3F;
+    color:white;
+    overflow-x:hidden;
+  }
+
+  header{
+    position:fixed;
+    top:0;width:100%;
+    background-color:#001F3F;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:15px 50px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.3);
+    z-index:1000;
+  }
+    .logo {
+    font-size:1.8em;
+    font-weight:700;
+    letter-spacing:2px;
+    background:linear-gradient(90deg,#FFD700,#FFF);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  .logo span {color:#FFD700;}
+
+  nav{display:flex;align-items:center;transition:all 0.3s ease-in-out;}
+  nav a{
+    color:white;text-decoration:none;margin:0 15px;
+    font-weight:bold;transition:0.3s;
+  }
+  nav a:hover{color:#FFD700;}
+
+  .hamburger{display:none;flex-direction:column;cursor:pointer;}
+  .hamburger div{width:25px;height:3px;background:#FFD700;margin:4px 0;}
+
+  @media(max-width:768px){
+    header{padding:15px 20px;}
+    nav{
+      position:absolute;top:70px;left:0;width:100%;
+      background-color:#001F3F;
+      flex-direction:column;text-align:center;
+      max-height:0;overflow:hidden;
+    }
+    nav.active{max-height:300px;
+    border-top:1px solid #FFD700;
+    padding:15px 0;}
+    nav a{display:block;
+    margin:12px 0;}
+    .hamburger{display:flex;}
+  }
+
+  .hero{
+    background:linear-gradient(rgba(0,31,63,0.9),rgba(0,31,63,0.9)),url('https://images.unsplash.com/photo-1511376777868-611b54f68947?auto=format&fit=crop&w=1400&q=60') center/cover;
+    height:55vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding-top:100px;
+  }
+  .hero h1{font-size:3em;
+  color:#FFD700;
+  margin-bottom:15px;}
+  .hero p{width:80%;
+  max-width:700px;
+  font-size:1.1em;
+  line-height:1.5;}
+
+  .music-section{
+    background-color:#002B5B;
+    padding:70px 20px;
+    text-align:center;
+  }
+  .music-section h2{
+    color:#FFD700;
+    font-size:2em;
+    margin-bottom:40px;
+  }
+  .music-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+    justify-items:center;
+  }
+  .track{
+    background-color:#001F3F;
+    border-radius:15px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.4);
+    padding:25px;
+    width:100%;
+    max-width:320px;
+    transition:transform 0.3s,box-shadow 0.3s;
+  }
+  .track:hover{
+    transform:translateY(-8px);
+    box-shadow:0 0 20px rgba(255,215,0,0.5);
+  }
+  .track img{
+    width:100%;
+    border-radius:10px;
+    margin-bottom:15px;
+  }
+  .track h3{
+    color:#FFD700;
+    margin-bottom:10px;
+  }
+  .track audio{
+    width:100%;
+    outline:none;
+  }
+
+  .iframe-section{
+    padding:60px 15px;
+    background-color:#001F3F;
+    text-align:center;
+  }
+  .iframe-section h2{
+    color:#FFD700;
+    margin-bottom:25px;
+  }
+  iframe{
+    width:90%;
+    max-width:700px;
+    height:380px;
+    border:3px solid #FFD700;
+    border-radius:12px;
+  }
+
+  footer{
+    background-color:#001F3F;
+    color:#FFD700;
+    text-align:center;
+    padding:15px 0;
+    border-top:1px solid #FFD700;
+  }
+
+  @media(max-width:500px){
+    .hero h1{font-size:2.2em;}
+    .hero p{font-size:1em;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">My <span>Creative</span> World</div>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <div></div><div></div><div></div>
+  </div>
+
+  <nav id="navMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="projects.html">Projects</a>
+    <a href="music.html">Music</a>
+    <a href="contact.html">Contact</a>
+    <a href="feedback.html">Feedback</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Our Creative Sounds</h1>
+  <p>Discover tracks and audio works that bring innovation and emotion together in our creative world.</p>
+</section>
+
+<section class="music-section">
+  <h2>Featured Tracks</h2>
+  <div class="music-grid">
+    <div class="track">
+      <img src="/IMG-20251014-WA0085.jpg" alt="Track 1">
+      <h3>Golden Dreams</h3>
+      <audio controls>
+        <source src="Qing-Madi-Goosebumps-(TrendyBeatz.com).mp3" type="audio/mp3">
+        Your browser does not support audio.
+      </audio>
+    </div>
+
+    <div class="track">
+      <img src="/IMG-20251014-WA0075.jpg" alt="Track 2">
+      <h3>Code Rhythm</h3>
+      <audio controls>
+        <source src="Qing-Madi-Sins-For-U-(TrendyBeatz.com).mp3" type="audio/mp3">
+        Your browser does not support audio.
+      </audio>
+    </div>
+
+    <div class="track">
+      <img src="Snapchat-624882280.jpg" alt="Track 3">
+      <h3>Midnight Flow</h3>
+      <audio controls>
+        <source src="Qing-Madi-American-Love-(TrendyBeatz.com).mp3" type="audio/mp3">
+        Your browser does not support audio.
+      </audio>
+    </div>
+  </div>
+</section>
+
+<section class="iframe-section">
+  <h2>Watch Our Featured Performance</h2>
+  <iframe src="https://www.youtube.com/embed/ScMzIvxBSi4" title="Creative Performance"></iframe>
+</section>
+
+<footer>
+  &copy; 2025 My Creative World | Sounds || LORDHOPE042
+</footer>
+
+<script>
+  function toggleMenu(){
+    document.getElementById('navMenu').classList.toggle('active');
+  }
+</script>
+
+</body>
+</html>

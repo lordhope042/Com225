@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us - My Creative World</title>
+
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    font-family:'Poppins',sans-serif;
+    background-color:#001F3F;
+    color:white;
+    overflow-x:hidden;
+  }
+
+  header{
+    position:fixed;
+    top:0;width:100%;
+    background-color:#001F3F;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:15px 50px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.3);
+    z-index:1000;
+  }
+
+    .logo {
+    font-size:1.8em;
+    font-weight:700;
+    letter-spacing:2px;
+    background:linear-gradient(90deg,#FFD700,#FFF);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  .logo span {color:#FFD700;}
+  nav{
+    display:flex;
+    align-items:center;
+    transition:all 0.3s ease-in-out;
+  }
+  nav a{
+    color:white;
+    text-decoration:none;
+    margin:0 15px;
+    font-weight:bold;transition:0.3s;
+  }
+  nav a:hover{color:#FFD700;}
+
+  .hamburger{
+    display:none;
+    flex-direction:column;
+    justify-content:center;
+    cursor:pointer;
+  }
+  .hamburger div{
+    width:25px;
+    height:3px;
+    background:#FFD700;
+    margin:4px 0;
+    transition:0.4s;
+  }
+
+  @media(max-width:768px){
+    header{padding:15px 20px;}
+    nav{
+      position:absolute;
+      top:70px;left:0;
+      width:100%;
+      background-color:#001F3F;
+      flex-direction:column;text-align:center;
+      max-height:0;overflow:hidden;
+    }
+    nav.active{max-height:300px;
+    border-top:1px solid #FFD700;
+    padding:15px 0;}
+    nav a{display:block;
+    margin:12px 0;}
+    .hamburger{display:flex;}
+  }
+  .hero{
+    background:linear-gradient(rgba(0,31,63,0.85),rgba(0,31,63,0.95)),url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=60') center/cover;
+    height:70vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding-top:100px;
+  }
+  .hero h1{font-size:3em;
+  color:#FFD700;
+  margin-bottom:10px;
+  }
+  .hero p{width:80%;
+  max-width:700px;
+  line-height:1.6;
+  font-size:1.1em;
+  }
+  .about-section{
+    display:flex;flex-wrap:wrap;align-items:center;
+    justify-content:center;
+    padding:80px 50px;
+    gap:40px;
+  }
+  .about-text{flex:1 1 400px;max-width:600px;}
+  .about-text h2{color:#FFD700;font-size:2em;margin-bottom:15px;}
+  .about-text p{line-height:1.7;margin-bottom:15px;}
+  .about-img{flex:1 1 300px;}
+  .about-img img{
+    width:100%;border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.4);
+  }
+
+  .mission-vision{
+    background-color:#002B5B;
+    padding:70px 30px;
+    text-align:center;
+  }
+  .mission-vision h2{
+    color:#FFD700;
+    margin-bottom:30px;
+    font-size:2em;
+  }
+  .mv-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;justify-items:center;
+  }
+  .mv-box{
+    background-color:#001F3F;
+    padding:30px;border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.3);
+    transition:0.3s;
+  }
+  .mv-box:hover{
+    background-color:#FFD700;
+    color:#001F3F;
+    transform:translateY(-8px) scale(1.03);
+    box-shadow:0 0 20px rgba(255,215,0,0.4);
+  }
+  .mv-box h3{margin-bottom:10px;color:#FFD700;}
+  .mv-box p{line-height:1.6;}
+  .mv-box:hover h3{color:#001F3F;}
+
+
+  .team-photo{
+    padding:60px 20px;text-align:center;
+  }
+  .team-photo h2{color:#FFD700;
+  margin-bottom:25px;
+  font-size:2em;
+  }
+  .team-photo img{
+    width:90%;
+    max-width:900px;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.4);
+  }
+
+  footer{
+    background-color:#001F3F;
+    color:#FFD700;
+    text-align:center;
+    padding:15px 0;
+    border-top:1px solid #FFD700;
+  }
+
+  @media(max-width:500px){
+    .hero h1{font-size:2.2em;}
+    .hero p{font-size:1em;}
+    .about-section{padding:50px 20px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">My <span>Creative</span> World</div>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <div></div><div></div><div></div>
+  </div>
+
+  <nav id="navMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="projects.html">Projects</a>
+    <a href="music.html">Music</a>
+    <a href="contact.html">Contact</a>
+    <a href="feedback.html">Feedback</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Who We Are</h1>
+  <p>We are a team of passionate developers and designers dedicated to crafting digital experiences that inspire, perform, and deliver luxury in every detail.</p>
+</section>
+
+<section class="about-section">
+  <div class="about-text">
+    <h2>About My Creative World</h2>
+    <p>My Creative World is a digital studio made up of six talented professionals who blend innovation, art, and technology to create remarkable online experiences. Founded in 2025, we aim to redefine modern web aesthetics with a touch of luxury and precision.</p>
+    <p>Our team covers every corner of digital development — from design to deployment — ensuring quality, creativity, and consistency in everything we do.</p>
+  </div>
+  <div class="about-img">
+    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900&q=60" alt="Our Team at Work">
+  </div>
+</section>
+
+<section class="mission-vision">
+  <h2>Our Core Beliefs</h2>
+  <div class="mv-container">
+    <div class="mv-box">
+      <h3>Our Mission</h3>
+      <p>To empower businesses and individuals with creative and scalable digital solutions that reflect elegance, innovation, and excellence.</p>
+    </div>
+    <div class="mv-box">
+      <h3>Our Vision</h3>
+      <p>To become a global creative hub recognized for transforming ideas into timeless digital masterpieces.</p>
+    </div>
+    <div class="mv-box">
+      <h3>Our Core Values</h3>
+      <p>Creativity. Teamwork. Integrity. Quality. Innovation. We uphold these values in every project and collaboration.</p>
+    </div>
+  </div>
+</section>
+
+<section class="team-photo">
+  <h2>Our Creative Team</h2>
+  <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1200&q=60" alt="Team Collaboration">
+</section>
+
+<footer>
+  &copy; 2025 My Creative World || LORDHOPE042
+</footer>
+
+<script>
+  function toggleMenu(){
+    document.getElementById('navMenu').classList.toggle('active');
+  }
+</script>
+
+</body>
+</html>

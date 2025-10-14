@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us - My Creative World</title>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #001F3F;
+    color: white;
+    overflow-x: hidden;
+  }
+
+  header {
+    position: fixed;
+    top: 0; width: 100%;
+    background-color: #001F3F;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 50px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+  }
+
+  .logo {
+    font-size: 1.8em;
+    font-weight: 700;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, #FFD700, #FFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .logo span { color: #FFD700; }
+
+  nav {
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+  }
+
+  nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+
+  nav a:hover { color: #FFD700; }
+
+  .book-btn {
+    background-color: #FFD700;
+    color: #001F3F;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+  .book-btn:hover {
+    background-color: white;
+    color: #001F3F;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .hamburger div {
+    width: 25px;
+    height: 3px;
+    background: #FFD700;
+    margin: 4px 0;
+    transition: 0.4s;
+  }
+
+  /* ===== HERO SECTION ===== */
+  .hero {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 100px;
+    background: linear-gradient(rgba(0,31,63,0.85), rgba(0,31,63,0.95)),
+                url('https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1350&q=80') center/cover;
+  }
+
+  .hero h1 {
+    font-size: 3em;
+    color: #FFD700;
+    margin-bottom: 10px;
+  }
+
+  .hero p {
+    width: 80%;
+    max-width: 700px;
+    line-height: 1.6;
+    font-size: 1.1em;
+    color: #fff;
+  }
+
+  .hero .btn {
+    margin-top: 25px;
+    background-color: #FFD700;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1em;
+    border-radius: 25px;
+    cursor: pointer;
+    color: #001F3F;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+
+  .hero .btn:hover {
+    background-color: #fff;
+    color: #001F3F;
+  }
+
+  /* ===== CONTACT SECTION ===== */
+  .contact-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    padding: 80px 20px;
+    background-color: #002B5B;
+  }
+
+  .contact-info, .contact-form {
+    background-color: #001F3F;
+    border-radius: 12px;
+    padding: 30px;
+    width: 400px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  }
+
+  .contact-info h2, .contact-form h2 {
+    color: #FFD700;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .contact-info p {
+    margin: 12px 0;
+    font-size: 1.05em;
+  }
+
+  .contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 6px;
+    background: #fff;
+    color: #001F3F;
+    font-size: 1em;
+  }
+
+  .contact-form button {
+    background-color: #FFD700;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1em;
+    border-radius: 25px;
+    cursor: pointer;
+    color: #001F3F;
+    font-weight: bold;
+    transition: 0.3s;
+    width: 100%;
+  }
+
+  .contact-form button:hover {
+    background-color: #fff;
+    color: #001F3F;
+  }
+
+  /* ===== MODAL ===== */
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+  }
+
+  .modal-content {
+    background-color: #001F3F;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 450px;
+    box-shadow: 0 0 20px rgba(255,215,0,0.4);
+    text-align: center;
+    animation: fadeIn 0.4s ease;
+  }
+
+  .modal-content h2 {
+    color: #FFD700;
+    margin-bottom: 20px;
+  }
+
+  .modal-content input, .modal-content textarea, .modal-content select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    color: #001F3F;
+  }
+
+  .modal-content button {
+    margin-top: 10px;
+    background-color: #FFD700;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    color: #001F3F;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .modal-content button:hover {
+    background-color: white;
+    color: #001F3F;
+  }
+
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.5em;
+    color: #FFD700;
+    cursor: pointer;
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0; transform: translateY(-10px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+
+  footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background-color: #001F3F;
+    color: #FFD700;
+    text-align: center;
+    padding: 15px 0;
+    border-top: 1px solid #FFD700;
+    font-size: 0.9em;
+  }
+
+  @media (max-width: 768px) {
+    header { padding: 15px 20px; }
+    nav {
+      position: absolute;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      background-color: #001F3F;
+      flex-direction: column;
+      text-align: center;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-in-out;
+    }
+    nav.active { max-height: 350px; border-top: 1px solid #FFD700; padding: 15px 0; }
+    nav a { display: block; margin: 12px 0; }
+    .hamburger { display: flex; }
+
+    .hero h1 { font-size: 2.2em; }
+    .hero p { font-size: 1em; }
+    .contact-info, .contact-form { width: 90%; }
+  }
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">My <span>Creative</span> World</div>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <div></div><div></div><div></div>
+  </div>
+
+  <nav id="navMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="projects.html">Projects</a>
+    <a href="music.html">Music</a>
+    <a href="contact.html">Contact</a>
+    <a href="feedback.html">Feedback</a>
+    <a href="#" class="book-btn" onclick="openModal()">Book Appointment</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Contact Us</h1>
+  <p>We’d love to collaborate, innovate, and build something creative with you.</p>
+  <button class="btn" onclick="openModal()">Book Appointment</button>
+</section>
+
+<section class="contact-section">
+  <div class="contact-info">
+    <h2>Get in Touch</h2>
+    <p><b>📍 Address:</b> 123 Shagari Quarters, jigawa, Nigeria</p>
+    <p><b>📞 Phone:</b> +234 7033087993 or 09043883463</p>
+    <p><b>✉️ Email:</b> lordhopechika372@gmail.com</p>
+    <p><b>🕒 Hours:</b> Mon – Sat: 9am – 6pm</p>
+  </div>
+
+  <div class="contact-form">
+    <h2>Send a Message</h2>
+    <form onsubmit="showMessage(event)">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<!-- ===== APPOINTMENT MODAL ===== -->
+<div class="modal" id="appointmentModal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2>Book an Appointment</h2>
+    <form onsubmit="bookAppointment(event)">
+      <input type="text" placeholder="Full Name" required>
+      <input type="email" placeholder="Email Address" required>
+      <input type="tel" placeholder="Phone Number" required>
+      <select required>
+        <option value="">Select a Service</option>
+        <option>Web Design</option>
+        <option>App Development</option>
+        <option>Branding & UI/UX</option>
+        <option>Consultation</option>
+      </select>
+      <textarea rows="4" placeholder="Additional Details (optional)"></textarea>
+      <button type="submit">Confirm Appointment</button>
+    </form>
+  </div>
+</div>
+
+<footer>
+  &copy; 2025 My Creative World || LORDHOPE042
+</footer>
+
+<script>
+  function toggleMenu(){
+    document.getElementById('navMenu').classList.toggle('active');
+  }
+
+  function showMessage(event){
+    event.preventDefault();
+    alert("Thank you for contacting us! We'll get back to you shortly.");
+  }
+
+  function openModal(){
+    document.getElementById("appointmentModal").style.display = "flex";
+  }
+
+  function closeModal(){
+    document.getElementById("appointmentModal").style.display = "none";
+  }
+
+  function bookAppointment(event){
+    event.preventDefault();
+    alert("Your appointment has been booked successfully!");
+    closeModal();
+  }
+
+  // Close modal on outside click
+  window.onclick = function(event) {
+    const modal = document.getElementById("appointmentModal");
+    if (event.target == modal) {
+      closeModal();
+    }
+  }
+</script>
+
+</body>
+</html>

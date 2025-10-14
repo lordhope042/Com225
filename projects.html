@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects - My Creative World</title>
+
+<style>
+  *{margin:0;
+  padding:0;
+  box-sizing:border-box;
+  }
+  body{
+    font-family:'Poppins',sans-serif;
+    background-color:#001F3F;
+    color:white;
+    overflow-x:hidden;
+  }
+
+  header{
+    position:fixed;top:0;width:100%;
+    background-color:#001F3F;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:15px 50px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.3);
+    z-index:1000;
+  }
+    .logo {
+    font-size:1.8em;
+    font-weight:700;
+    letter-spacing:2px;
+    background:linear-gradient(90deg,#FFD700,#FFF);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  .logo span {color:#FFD700;}
+
+  nav{display:flex;
+  align-items:center;
+  transition:all 0.3s ease-in-out;
+  }
+  nav a{
+    color:white;
+    text-decoration:none;
+    margin:0 15px;
+    font-weight:bold;
+    transition:0.3s;
+  }
+  nav a:hover{color:#FFD700;}
+
+  .hamburger{display:none;
+  flex-direction:column;
+  cursor:pointer;
+  }
+  .hamburger div{width:25px;
+  height:3px;
+  background:#FFD700;
+  margin:4px 0;}
+
+  @media(max-width:768px){
+    header{padding:15px 20px;}
+    nav{
+      position:absolute;
+      top:70px;
+      left:0;
+      width:100%;
+      background-color:#001F3F;
+      flex-direction:column;text-align:center;
+      max-height:0;overflow:hidden;
+    }
+    nav.active{max-height:300px;
+    border-top:1px solid #FFD700;
+    padding:15px 0;}
+    nav a{display:block;margin:12px 0;}
+    .hamburger{display:flex;}
+  }
+
+  .hero{
+    background:linear-gradient(rgba(0,31,63,0.9),rgba(0,31,63,0.95)),url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=60') center/cover;
+    height:55vh;
+    display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+    padding-top:100px;
+  }
+  .hero h1{font-size:3em;color:#FFD700;margin-bottom:15px;}
+  .hero p{width:80%;max-width:700px;font-size:1.1em;line-height:1.5;}
+
+  /* ===== PROJECT TABLE ===== */
+  .projects{
+    overflow-x: auto;
+    background-color:#002B5B;
+    padding:80px 25px;text-align:center;
+  }
+  .projects h2{color:#FFD700;font-size:2em;margin-bottom:40px;}
+
+  table{
+    width:100%;
+    max-width:900px;
+    margin:0 auto 50px auto;
+    border-collapse:collapse;
+    background-color:#001F3F;
+    color:white;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 0 15px rgba(0,0,0,0.4);
+  }
+  th,td{
+    padding:15px;
+    text-align:left;
+    border-bottom:1px solid #FFD700;
+  }
+  th{
+    background-color:#FFD700;
+    color:#001F3F;
+    text-transform:uppercase;
+  }
+  tr:hover{
+    background-color:rgba(255,215,0,0.1);
+    transition:0.3s;
+  }
+
+  
+  .team{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+    margin-top:30px;
+  }
+  .member{
+    background-color:#001F3F;
+    padding:25px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 4px 15px rgba(0,0,0,0.3);
+    transition:transform 0.3s,box-shadow 0.3s;
+  }
+  .member:hover{
+    transform:translateY(-8px);
+    box-shadow:0 0 20px rgba(255,215,0,0.4);
+  }
+  .member img{
+    width:100px;height:100px;border-radius:50%;
+    object-fit:cover;
+    border:3px solid #FFD700;
+    margin-bottom:15px;
+  }
+  .member h3{color:#FFD700;margin-bottom:5px;}
+  .member p{font-size:0.9em;color:#ccc;}
+
+
+  footer{
+    background-color:#001F3F;
+    color:#FFD700;
+    text-align:center;
+    padding:15px 0;
+    border-top:1px solid #FFD700;
+  }
+
+  @media(max-width:500px){
+    .hero h1{font-size:2.2em;}
+    .hero p{font-size:1em;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">My <span>Creative</span> World</div>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <div></div><div></div><div></div>
+  </div>
+
+  <nav id="navMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="projects.html">Projects</a>
+    <a href="music.html">Music</a>
+    <a href="contact.html">Contact</a>
+    <a href="feedback.html">Feedback</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Our Projects</h1>
+  <p>Explore our premium projects crafted by our talented team of developers, designers, and innovators.</p>
+</section>
+
+<section class="projects">
+  <h2>Project Overview</h2>
+  <table>
+    <tr>
+      <th>Project Name</th>
+      <th>Type</th>
+      <th>Lead Developer</th>
+      <th>Status</th>
+    </tr>
+    <tr>
+      <td>Luxury Portfolio</td>
+      <td>Website</td>
+      <td>Okechukwu Hope Chikamso</td>
+      <td>Completed</td>
+    </tr>
+    <tr>
+      <td>Modern UI Dashboard</td>
+      <td>Web App</td>
+      <td>Hauwa Dauda Abdulkarim</td>
+      <td>In Progress</td>
+    </tr>
+    <tr>
+      <td>Gold Studio Branding</td>
+      <td>Design</td>
+      <td>Abdulmajid Abdulrazak</td>
+      <td>Completed</td>
+    </tr>
+    <tr>
+      <td>Creative Blog System</td>
+      <td>CMS</td>
+      <td>Ephraim Joseph Babuga</td>
+      <td>Pending Review</td>
+    </tr>
+    <tr>
+      <td>Mobile E-Shop</td>
+      <td>App</td>
+      <td>Amina Harisu Isa</td>
+      <td>Completed</td>
+    </tr>
+    <tr>
+      <td>AI Portfolio</td>
+      <td>AI Integration</td>
+      <td>Ibrahim Abbas</td>
+      <td>Testing</td>
+    </tr>
+  </table>
+
+  <div class="team">
+    <div class="member">
+      <img src="Snapchat-624882280.jpg" alt="LORDHOPE">
+      <h3>Okechukwu Hope Chikamso</h3>
+      <p>Full Stack Developer & Ai specialist</p>
+    </div>
+    <div class="member">
+      <img src="/IMG-20251014-WA0078.jpg" alt="babuga">  
+      <h3>Ephraim Joseph Babuga.</h3>  
+      <p>Backend Engineer</p>  
+    </div>
+    <div class="member">
+      <img src="/IMG-20251014-WA0075.jpg" alt="Hauwa">  
+      <h3>Hauwa Dauda Abdulkarim</h3>  
+      <p>Front Developer</p>  
+    </div>
+    <div class="member">
+      <img src="/IMG-20251014-WA0069.jpg" alt="A.A">  
+      <h3>Abdulmajid Abdulrazak</h3>  
+      <p>UI/UX Designer</p>  
+    </div>
+    <div class="member">
+      <img src="/IMG-20251014-WA0074.jpg" alt="Amina">  
+      <h3>Amina Harisu Isa</h3>  
+      <p>Mobile App Developer</p>  
+    </div>
+    <div class="member">
+    <img src="/IMG-20251014-WA0085.jpg" alt="IB">  
+      <h3>Ibrahim Abbas</h3>  
+      <p>Software Tester</p>  
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 My Creative World || LORDHOPE042
+</footer>
+
+<script>
+  function toggleMenu(){
+    document.getElementById('navMenu').classList.toggle('active');
+  }
+</script>
+
+</body>
+</html>
